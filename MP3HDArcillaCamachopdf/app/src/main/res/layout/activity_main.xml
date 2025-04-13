@@ -6,13 +6,31 @@
     android:padding="24dp"
     android:gravity="center">
 
+    <TextView
+        android:id="@+id/enterName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Enter Student Name"
+        android:textSize="24sp"/>
+
     <EditText
         android:id="@+id/fullName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="75dp"
         android:hint="Full Name"
         android:inputType="textPersonName"
-        android:layout_marginBottom="16dp" />
+        android:rotationY="0" />
+
+
+    <TextView
+        android:id="@+id/gradeView"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:text="Enter Grades"
+        android:textSize="24sp" />
 
     <EditText
         android:id="@+id/prelimGrade"
@@ -57,4 +75,5 @@
             android:layout_height="wrap_content"
             android:text="New Entry" />
     </LinearLayout>
+
 </LinearLayout>

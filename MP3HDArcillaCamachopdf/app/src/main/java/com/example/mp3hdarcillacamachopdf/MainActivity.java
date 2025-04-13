@@ -80,8 +80,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
             String message = "Student: " + name +
-                    "\nSemestral Grade: " + semGrade +
-                    "\nPoint Equivalent: " + ptEquivalent;
+                             "\nSemestral Grade: " + semGrade +
+                             "\nPoint Equivalent: " + ptEquivalent;
 
             new AlertDialog.Builder(this)
                     .setTitle("Grade Result")
