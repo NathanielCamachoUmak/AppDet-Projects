@@ -1,16 +1,23 @@
 package com.example.mp3hdarcillacamachopdf;
 
 import android.app.AlertDialog;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
-import android.view.View;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     EditText fullName, prelimGrade, midtermGrade, finalGrade;
+    TextView nameLabel, semGradeLabel, ptEquiLabel, remarksLabel, remarksResult;
     Button btnCompute, btnNewEntry;
 
     @Override
@@ -23,74 +30,65 @@ public class MainActivity extends AppCompatActivity {
         prelimGrade = findViewById(R.id.prelimGrade);
         midtermGrade = findViewById(R.id.midtermGrade);
         finalGrade = findViewById(R.id.finalGrade);
+        nameLabel = findViewById(R.id.nameLabel);
+        semGradeLabel = findViewById(R.id.semGradeLabel);
+        ptEquiLabel = findViewById(R.id.ptEquiLabel);
+        remarksLabel = findViewById(R.id.remarksLabel);
+        remarksResult = findViewById(R.id.remarksResult); // New TextView
         btnCompute = findViewById(R.id.btnCompute);
         btnNewEntry = findViewById(R.id.btnNewEntry);
 
-        // Compute button click
-        btnCompute.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new AlertDialog.Builder(MainActivity.this)
-                        .setTitle("Confirm")
-                        .setMessage("Are all entries correct?")
-                        .setPositiveButton("Yes", (dialog, which) -> computeGrade())
-                        .setNegativeButton("No", null)
-                        .show();
-            }
-        });
-
-        // New Entry button click
-        btnNewEntry.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new AlertDialog.Builder(MainActivity.this)
-                        .setTitle("Confirm")
-                        .setMessage("Are you sure you want to clear all entries?")
-                        .setPositiveButton("Yes", (dialog, which) -> clearFields())
-                        .setNegativeButton("No", null)
-                        .show();
-            }
-        });
+        btnCompute.setOnClickListener(v -> showConfirmDialog(true));
+        btnNewEntry.setOnClickListener(v -> showConfirmDialog(false));
     }
 
-    private void computeGrade() {
+    private void showConfirmDialog(boolean isCompute) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(isCompute ? "Confirm Action" : "Confirm Action")
+                .setMessage(isCompute ? "Are all entries correct?" : "Do you want to start a new entry?")
+                .setPositiveButton("Yes", (dialog, which) -> {
+                    if (isCompute) {
+                        computeGrades();
+                    } else {
+                        clearFields();
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
+
+    private void computeGrades() {
+        String name = fullName.getText().toString().trim();
+        String pText = prelimGrade.getText().toString().trim();
+        String mText = midtermGrade.getText().toString().trim();
+        String fText = finalGrade.getText().toString().trim();
+
         try {
-            String name = fullName.getText().toString();
-            float prelim = Float.parseFloat(prelimGrade.getText().toString());
-            float midterm = Float.parseFloat(midtermGrade.getText().toString());
-            float finals = Float.parseFloat(finalGrade.getText().toString());
-
-            float semGrade = (prelim * 0.25f) + (midterm * 0.25f) + (finals * 0.5f);
-            String ptEquivalent;
-
-            if (semGrade == 100) {
-                ptEquivalent = "1.00";
-            } else if (semGrade >= 95) {
-                ptEquivalent = "1.50";
-            } else if (semGrade >= 90) {
-                ptEquivalent = "2.00";
-            } else if (semGrade >= 85) {
-                ptEquivalent = "2.50";
-            } else if (semGrade >= 80) {
-                ptEquivalent = "3.00";
-            } else if (semGrade >= 75) {
-                ptEquivalent = "3.50";
-            } else {
-                ptEquivalent = "5.00";
+            if (name.isEmpty() || pText.isEmpty() || mText.isEmpty() || fText.isEmpty()) {
+                throw new Exception("Incomplete fields");
             }
 
-            String message = "Student: " + name +
-                             "\nSemestral Grade: " + semGrade +
-                             "\nPoint Equivalent: " + ptEquivalent;
+            float p = Float.parseFloat(pText);
+            float m = Float.parseFloat(mText);
+            float f = Float.parseFloat(fText);
+            float semGrade = (p + m + f) / 3;
+            float pointEquiv = getPointEquivalent(semGrade);
+            String resultText = pointEquiv == 5.0f ? "FAILED" : "PASSED";
+            int resultColor = pointEquiv == 5.0f ? Color.RED : Color.BLUE;
 
-            new AlertDialog.Builder(this)
-                    .setTitle("Grade Result")
-                    .setMessage(message)
-                    .setPositiveButton("OK", null)
-                    .show();
+            nameLabel.setText("Student Name: " + name);
+            semGradeLabel.setText(String.format("Semestral Grade: %.2f", semGrade));
+            ptEquiLabel.setText(String.format("Point Equivalent: %.2f", pointEquiv));
+            remarksLabel.setText("Final Remarks:");
+            SpannableString styledResult = new SpannableString(resultText);
+            styledResult.setSpan(new ForegroundColorSpan(resultColor), 0, resultText.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            styledResult.setSpan(new StyleSpan(Typeface.BOLD), 0, resultText.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
+            remarksResult.setText(styledResult);
+
+            Toast.makeText(this, "Calculation complete!", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
-            Toast.makeText(this, "Please fill in all fields correctly.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Incomplete/invalid data!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -99,5 +97,23 @@ public class MainActivity extends AppCompatActivity {
         prelimGrade.setText("");
         midtermGrade.setText("");
         finalGrade.setText("");
+
+        nameLabel.setText("Student Name:");
+        semGradeLabel.setText("Semestral Grade:");
+        ptEquiLabel.setText("Point Equivalent:");
+        remarksLabel.setText("Final Remarks:");
+        remarksResult.setText("");
+
+        Toast.makeText(this, "Ready for new entry", Toast.LENGTH_SHORT).show();
+    }
+
+    private float getPointEquivalent(float grade) {
+        if (grade >= 100) return 1.00f;
+        if (grade >= 95) return 1.50f;
+        if (grade >= 90) return 2.00f;
+        if (grade >= 85) return 2.50f;
+        if (grade >= 80) return 3.00f;
+        if (grade >= 75) return 3.50f;
+        return 5.00f;
     }
 }

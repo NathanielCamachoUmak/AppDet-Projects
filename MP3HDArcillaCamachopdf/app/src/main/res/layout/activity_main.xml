@@ -1,79 +1,288 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="24dp"
-    android:gravity="center">
+    tools:context=".MainActivity">
+
+    <!-- Enter Student Name TextView -->
+
+    <!-- Full Name EditText -->
+
+    <!-- width set to 0dp to fill available space -->
+    android:layout_height="wrap_content"
+    android:hint="Full Name"
+    android:inputType="textPersonName"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/enterName"
+    app:layout_constraintBottom_toTopOf="@+id/gradeView" />
+
+    <!-- Enter Grades TextView -->
+
+    <!-- Prelim Grade EditText -->
+
+    <!-- width set to 0dp to fill available space -->
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    android:hint="Prelim Grade"
+    android:inputType="numberDecimal"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/gradeView"
+    app:layout_constraintBottom_toTopOf="@+id/midtermGrade" />
+
+    <!-- Midterm Grade EditText -->
+    <!-- width set to 0dp to fill available space -->
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    android:hint="Midterm Grade"
+    android:inputType="numberDecimal"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/prelimGrade"
+    app:layout_constraintBottom_toTopOf="@+id/finalGrade" />
+
+    <!-- Final Grade EditText -->
+    <!-- width set to 0dp to fill available space -->
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="32dp"
+    android:hint="Final Grade"
+    android:inputType="numberDecimal"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/midtermGrade"
+    app:layout_constraintBottom_toTopOf="@+id/buttonLayout" />
+
+    <!-- Buttons Layout (Compute & New Entry) -->
+
+    <TextView
+        android:id="@+id/remarksResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/remarksLabel"
+        app:layout_constraintTop_toBottomOf="@+id/ptEquiLabel" />
+
+    <TextView
+        android:id="@+id/appMainLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="monospace"
+        android:text="Grade Calculator"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/remarksLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Final Remarks:"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ptEquiLabel" />
+
+    <TextView
+        android:id="@+id/ptEquiLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Point Equivalent:"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.016"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/semGradeLabel" />
+
+    <TextView
+        android:id="@+id/semGradeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Semestral Grade:"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.017"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameLabel" />
+
+    <TextView
+        android:id="@+id/nameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="62dp"
+        android:text="Student Name:"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.017"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLayout" />
+
+    <TextView
+        android:id="@+id/gradeView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Calculation Result:"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLayout" />
+
+    <TextView
+        android:id="@+id/fGradeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="48dp"
+        android:text="Finals Grade:"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/finalGrade"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mGradeLabel" />
+
+    <TextView
+        android:id="@+id/pGradeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="8dp"
+        android:text="Prelim Grade:"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/prelimGrade"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gradeView" />
 
     <TextView
         android:id="@+id/enterName"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:layout_marginTop="96dp"
         android:text="Enter Student Name"
-        android:textSize="24sp"/>
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/fullName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="75dp"
-        android:hint="Full Name"
-        android:inputType="textPersonName"
-        android:rotationY="0" />
-
+        android:layout_width="243dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="83dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="83dp"
+        android:layout_marginBottom="8dp"
+        android:hint="John Doe"
+        app:layout_constraintBottom_toTopOf="@+id/gradeView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enterName" />
 
     <TextView
         android:id="@+id/gradeView"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
         android:text="Enter Grades"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fullName" />
 
     <EditText
         android:id="@+id/prelimGrade"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Prelim Grade"
-        android:inputType="numberDecimal"
-        android:layout_marginBottom="16dp" />
+        android:layout_width="172dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="8dp"
+        android:hint="Prelim"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pGradeLabel"
+        app:layout_constraintTop_toBottomOf="@+id/gradeView" />
 
     <EditText
         android:id="@+id/midtermGrade"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Midterm Grade"
-        android:inputType="numberDecimal"
-        android:layout_marginBottom="16dp" />
+        android:layout_width="165dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:hint="Midterm"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toTopOf="@+id/finalGrade"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/mGradeLabel"
+        app:layout_constraintTop_toBottomOf="@+id/prelimGrade" />
 
     <EditText
         android:id="@+id/finalGrade"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Final Grade"
-        android:inputType="numberDecimal"
-        android:layout_marginBottom="32dp" />
+        android:layout_width="170dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:hint="Finals"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/fGradeLabel"
+        app:layout_constraintTop_toBottomOf="@+id/midtermGrade" />
 
     <LinearLayout
+        android:id="@+id/buttonLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
         android:orientation="horizontal"
-        android:gravity="center">
+        app:layout_constraintTop_toBottomOf="@+id/finalGrade"
+        tools:layout_editor_absoluteX="24dp">
 
+        <!-- Compute Button -->
         <Button
             android:id="@+id/btnCompute"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Compute"
-            android:layout_marginEnd="16dp" />
+            android:layout_marginEnd="16dp"
+            android:text="Compute" />
 
+        <!-- New Entry Button -->
         <Button
             android:id="@+id/btnNewEntry"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New Entry" />
     </LinearLayout>
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/mGradeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:text="Midterm Grade:"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/fGradeLabel"
+        app:layout_constraintEnd_toStartOf="@+id/midtermGrade"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pGradeLabel" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
