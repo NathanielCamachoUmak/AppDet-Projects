@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CC Jitters"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_gravity="center" />
+
+    <!-- CheckBoxes for Frappuccino -->
+    <TextView android:text="Frappuccino"
+        android:layout_height="30dp"
+        android:layout_width="wrap_content"/>
+    <CheckBox android:id="@+id/cbCaffe" android:text="Caffè Vanilla Frappuccino"
+        android:layout_height="30dp"
+        android:layout_width="wrap_content"/>
+    <CheckBox android:id="@+id/cbGreenTea" android:text="Green Tea Crème Frappuccino"
+        android:layout_height="30dp"
+        android:layout_width="wrap_content"/>
+    <CheckBox android:id="@+id/cbSmores" android:text="S'mores Frappuccino"
+        android:layout_height="30dp"
+        android:layout_width="wrap_content"/>
+    <CheckBox android:id="@+id/cbMocha" android:text="Mocha Frappuccino"
+        android:layout_height="30dp"
+        android:layout_width="wrap_content"/>
+
+    <!-- RadioButtons for Discount -->
+    <TextView android:text="Discount"
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content"/>
+    <RadioGroup android:id="@+id/rgDiscount"
+        android:layout_height="30dp"
+        android:layout_width="wrap_content">
+        <RadioButton android:id="@+id/rb5" android:text="5%"
+            android:layout_height="30dp"
+            android:layout_width="wrap_content"/>
+        <RadioButton android:id="@+id/rb10" android:text="10%"
+            android:layout_height="30dp"
+            android:layout_width="wrap_content"/>
+        <RadioButton android:id="@+id/rb15" android:text="15%"
+            android:layout_height="30dp"
+            android:layout_width="wrap_content"/>
+        <RadioButton android:id="@+id/rbNone" android:text="No Discount"
+            android:layout_height="30dp"
+            android:layout_width="wrap_content"/>
+    </RadioGroup>
+
+    <!-- Text Views for Output -->
+    <TextView android:id="@+id/tvSubTotal" android:text="Sub-Total: "
+        android:layout_height="20dp"
+        android:layout_width="wrap_content"/>
+    <TextView android:id="@+id/tvDiscount" android:text="Discount: "
+        android:layout_height="20dp"
+        android:layout_width="wrap_content"/>
+    <TextView android:id="@+id/tvNetAmount" android:text="Net Amount: "
+        android:layout_height="20dp"
+        android:layout_width="wrap_content"/>
+
+    <!-- Buttons -->
+    <LinearLayout android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:layout_marginLeft="50dp">
+
+        <Button android:id="@+id/btnCompute" android:text="COMPUTE"
+            android:layout_height="50dp"
+            android:layout_width="wrap_content"/>
+        <Button android:id="@+id/btnClear" android:text="CLEAR ALL"
+            android:layout_height="50dp"
+            android:layout_width="wrap_content"/>
+    </LinearLayout>
+</LinearLayout>
