@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">SixthHandsOnExercise</string>
+    <string-array name="employee_ids">
+        <item>EMP1201</item>
+        <item>EMP1202</item>
+        <item>EMP1203</item>
+        <item>EMP1204</item>
+        <item>EMP1205</item>
+    </string-array>
+
+    <string-array name="position_codes">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+    </string-array>
+</resources>

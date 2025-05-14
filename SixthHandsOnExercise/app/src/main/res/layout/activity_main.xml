@@ -1,0 +1,86 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:backgroundTint="#008000"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textViewEmployeeNo"
+        android:text="Employee Number"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:textSize="20sp"/>
+
+    <Spinner
+        android:id="@+id/spinnerID"
+        android:text="Employee ID"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <TextView
+        android:id="@+id/textViewName"
+        android:text="Employee Name"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginLeft="20dp" />
+
+    <TextView
+        android:id="@+id/textViewPosCode"
+        android:text="Position Code"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:textSize="20sp"/>
+
+    <Spinner
+        android:id="@+id/spinnerPosition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:buttonTint="#008000">
+
+        <RadioButton
+            android:id="@+id/radioSingle"
+            android:text="Single"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:buttonTint="#008000"/>
+        <RadioButton
+            android:id="@+id/radioMarried"
+            android:text="Married"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:buttonTint="#008000"/>
+        <RadioButton
+            android:id="@+id/radioWidowed"
+            android:text="Widowed"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:buttonTint="#008000"/>
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/editTextDays"
+        android:hint="No. of Days Worked"
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button android:id="@+id/buttonCompute"
+        android:text="COMPUTE"
+        android:backgroundTint="#008000"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/buttonClear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CLEAR"
+        android:backgroundTint="#008000"/>
+</LinearLayout>

@@ -1,0 +1,10 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.SixthHandsOnExercise" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#4CAF50</item>
+        <item name="colorPrimaryVariant">#388E3C</item>  <!-- Darker green -->
+        <item name="colorOnPrimary">#FFFFFF</item> <!-- Text color on top bar -->
+    </style>
+
+    <style name="Theme.SixthHandsOnExercise" parent="Base.Theme.SixthHandsOnExercise" />
+</resources>
